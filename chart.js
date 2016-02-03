@@ -39,17 +39,24 @@ var map  = {"burger":
 				}
 			};
 
+
 function drawGraph(map, key) {
 	var data = [];
+	var range = []
 
 	for (var i in map) {
   		if (map.hasOwnProperty(i)) {
-			data.push(map[i][key]);
+  			// data[i] = map[i][key]
+  			data_map = { 'name': i, 'value': map[i][key]}
+  			console.log(data_map);
+			data.push(data_map);
+			range.push(map[i][key]);
+			// data.push(map[i][key]);
 		}
  	}
 
 	var x = d3.scale.linear()
-		.domain([0, d3.max(data)])
+		.domain([0, d3.max(range)])
 		.range([0, 420]);
 
 	d3.select(".chart")
@@ -58,9 +65,12 @@ function drawGraph(map, key) {
 		.enter().append("div")
 		.style("width", function(d)
 		{
-			return x(d) + "px";
+			var y = d.value;
+			return x(y) + "px";
 		})
-		.text(function(d) { return d});
+		.text(function(d) {
+			return d.name + " - " + d.value;
+		});
 }
 
 drawGraph(map, "sold");
