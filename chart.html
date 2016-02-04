@@ -3,7 +3,7 @@
 		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<style>
 
-			
+
 			.chart div {
 				background-color: blueviolet;
 				text-align: left;
@@ -15,6 +15,10 @@
 	</HEAD>
 	<BODY>
 		<div class="chart"></div>
+		<div>
+			<input type=button onclick="drawGraph(map, 'sold');" value="Sold">
+			<input type=button onclick="drawGraph(map, 'amount');" value="Amount">
+		</div>
 		<script src="chart.js"></script>
 	</BODY>
 </HTML>

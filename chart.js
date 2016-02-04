@@ -46,12 +46,9 @@ function drawGraph(map, key) {
 
 	for (var i in map) {
   		if (map.hasOwnProperty(i)) {
-  			// data[i] = map[i][key]
   			data_map = { 'name': i, 'value': map[i][key]}
-  			console.log(data_map);
 			data.push(data_map);
 			range.push(map[i][key]);
-			// data.push(map[i][key]);
 		}
  	}
 
@@ -59,6 +56,7 @@ function drawGraph(map, key) {
 		.domain([0, d3.max(range)])
 		.range([0, 420]);
 
+	d3.select(".chart").selectAll("div").remove()
 	d3.select(".chart")
 		.selectAll("div")
 		.data(data)
