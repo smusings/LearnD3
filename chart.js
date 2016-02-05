@@ -56,7 +56,14 @@ function drawGraph(map, key) {
 		.domain([0, d3.max(range)])
 		.range([0, 420]);
 
-	d3.select(".chart").selectAll("div").remove()
+	d3.select(".chart").selectAll("div").remove() 
+	
+	d3.select(".header").text(key)
+
+
+
+	console.log(d3.select("header"));
+
 	d3.select(".chart")
 		.selectAll("div")
 		.data(data)
