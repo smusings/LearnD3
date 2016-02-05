@@ -75,6 +75,9 @@ function drawGraph(map, key) {
 		})
 		.text(function(d) {
 			return d.name + " - " + d.value;
+		})
+		.on('click', function(d){
+			drawGraph(map[d.name]["details"], "sold");
 		});
 }
 
