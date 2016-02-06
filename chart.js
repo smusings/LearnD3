@@ -60,10 +60,6 @@ function drawGraph(map, key) {
 	
 	d3.select(".header").text(key)
 
-
-
-	console.log(d3.select("header"));
-
 	d3.select(".chart")
 		.selectAll("div")
 		.data(data)
@@ -77,7 +73,11 @@ function drawGraph(map, key) {
 			return d.name + " - " + d.value;
 		})
 		.on('click', function(d){
-			drawGraph(map[d.name]["details"], "sold");
+			var new_map = map[d.name]["details"]
+			if (new_map != null)
+			{
+				drawGraph(new_map, "sold");
+			}
 		});
 }
 
