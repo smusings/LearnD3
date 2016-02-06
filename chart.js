@@ -1,3 +1,4 @@
+var parent = this;
 var map  = {"burger": 
 				{ "sold":1000,
 					"amount":200000,
@@ -40,7 +41,7 @@ var map  = {"burger":
 			};
 
 
-function drawGraph(map, key) {
+function drawGraph(key) {
 	var data = [];
 	var range = []
 
@@ -73,12 +74,15 @@ function drawGraph(map, key) {
 			return d.name + " - " + d.value;
 		})
 		.on('click', function(d){
-			var new_map = map[d.name]["details"]
-			if (new_map != null)
+			map = map[d.name]
+			if (map != null && map["details"] != null)
 			{
-				drawGraph(new_map, "sold");
+				map = map["details"]
+				drawGraph("sold");
 			}
 		});
+
+	console.log(map);
 }
 
-drawGraph(map, "sold");
+drawGraph("sold");
