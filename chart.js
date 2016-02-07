@@ -17,11 +17,11 @@ var map  = {"burger":
 					"amount":100000,
 					"details" : 
 					{
-						"bacon burger":{
-							"sold":250,
+						"bacon fries":{
+							"sold":350,
 							"amount":50000 },
-						"cheese burger":{
-							"sold":250,
+						"cheese fries":{
+							"sold":150,
 							"amount":50000}
 					}
 				},
@@ -30,11 +30,11 @@ var map  = {"burger":
 					"amount":10000,
 					"details" : 
 					{
-						"bacon burger":{
-							"sold":150,
+						"vanilla":{
+							"sold":250,
 							"amount":5000 },
-						"cheese burger":{
-							"sold":150,
+						"chocolate":{
+							"sold":50,
 							"amount":5000}
 					}
 				}
@@ -74,15 +74,15 @@ function drawGraph(key) {
 			return d.name + " - " + d.value;
 		})
 		.on('click', function(d){
+			console.log(d.name)
 			map = map[d.name]
+
 			if (map != null && map["details"] != null)
 			{
-				map = map["details"]
+				parent.map = map["details"]
 				drawGraph("sold");
 			}
 		});
-
-	console.log(map);
 }
 
 drawGraph("sold");
